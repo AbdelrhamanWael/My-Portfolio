@@ -1,149 +1,211 @@
+<div align="center">
+  
+# 🚀 Abdelrhaman Wael - Portfolio
 
-### 1\. Project Overview & Purpose
+[![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23-FF0055?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-  * **Project Name:** My Portfolio (based on the path `E:\MY PROJECT\react project\My Portfolio\app`)
-  * **Purpose:** A modern, personal portfolio website built with React and advanced tooling.
+**A modern, animated, and responsive portfolio website showcasing my journey as a Full Stack Developer**
 
-### 2\. Core Technologies (Tech Stack)
+[🌐 Live Demo](https://abdelrhamanwael.github.io/My-Portfolio/) • [📧 Contact Me](mailto:abdelrhamanwael8@gmail.com) • [💼 LinkedIn](https://www.linkedin.com/in/abdelrhaman-wael-mohammed-790171366/)
 
-  * [cite\_start]**Framework:** **React** ($\text{19.2.0}$) [cite: 3526, 3927]
-  * [cite\_start]**Build Tool/Bundler:** **Vite** ($\text{7.2.2}$) [cite: 3245, 3957] [cite\_start](used with `@vitejs/plugin-react` [cite: 3382, 3758])
-  * [cite\_start]**Styling:** **Tailwind CSS** ($\text{4.1.17}$) [cite: 3210, 3945] [cite\_start](using the `@tailwindcss/vite` plugin [cite: 3748])
-  * [cite\_start]**Animation:** **Framer Motion** ($\text{12.23.24}$) [cite: 3459, 3835]
-  * [cite\_start]**Icons:** **Lucide React** ($\text{0.554.0}$) [cite: 3484, 3899]
-  * [cite\_start]**Language:** JavaScript/TypeScript (The presence of `@types/react`, `@types/react-dom`, and TypeScript-related build scripts like `tsc` in dependent packages suggests a TypeScript codebase.) [cite: 3379, 3380, 3381]
+</div>
 
-### 3\. Build & Development Setup
+---
 
-  * [cite\_start]**Dev Commands:** `npm run dev` (runs `vite`) [cite: 3975]
-  * [cite\_start]**Build Commands:** `npm run build` (runs `vite build`) [cite: 3975]
-  * [cite\_start]**Linting:** **ESLint** ($\text{9.39.1}$) [cite: 3426, 3802]
-      * [cite\_start]**Plugins:** `eslint-plugin-react-hooks` [cite: 3434, 3810] [cite\_start]and `eslint-plugin-react-refresh` [cite: 3436, 3813] (for React Fast Refresh safety).
+## ✨ Overview
 
------
+Welcome to my personal portfolio! This is a modern single-page application (SPA) built with React, featuring stunning animations, dark/light mode, and a beautiful user interface. The portfolio showcases my projects, skills, experience, and education in an engaging way.
 
-# 🚀 My Portfolio
+---
 
-Welcome to my personal portfolio project repository\! This is a modern, responsive, and highly performant website built to showcase my projects, skills, and professional experience.
+## 🎯 Features
 
-## ✨ 1. Project Overview
+### 🎨 **Visual & UI**
 
-This project is a single-page application (SPA) designed with a minimal and visually appealing aesthetic. It leverages cutting-edge web technologies to deliver a smooth user experience, fast loading times, and engaging UI animations. The combination of React's component-based architecture with the speed of Vite and the utility of Tailwind CSS made development efficient and enjoyable.
+| Feature                    | Description                                        |
+| -------------------------- | -------------------------------------------------- |
+| 🌙 **Dark/Light Mode**     | Toggle between themes with smooth transitions      |
+| ✨ **Particle Background** | Interactive animated particles in the hero section |
+| 🖱️ **Custom Cursor**       | Unique cursor with hover effects                   |
+| ⏳ **Loading Screen**      | Branded splash screen with progress animation      |
+| 📊 **Animated Stats**      | Count-up animation for statistics                  |
+| ⌨️ **Typing Effect**       | Dynamic role cycling in hero section               |
 
-## 💻 2. Tech Stack
+### 🔧 **Functional**
 
-The following core technologies and libraries drive this project:
+| Feature                 | Description                                         |
+| ----------------------- | --------------------------------------------------- |
+| 📱 **Fully Responsive** | Optimized for all devices (mobile, tablet, desktop) |
+| 📧 **Contact Form**     | EmailJS integration for direct messaging            |
+| ⬆️ **Scroll to Top**    | Floating button for easy navigation                 |
+| 🔗 **Smooth Scrolling** | CSS-based smooth scroll behavior                    |
+| 🎭 **Framer Motion**    | Fluid animations throughout the site                |
 
-| Category | Technology | Version | Purpose |
-| :--- | :--- | :--- | :--- |
-| **Frontend** | **React** | `19.2.0` | [cite\_start]Core JavaScript library for building user interfaces. [cite: 3526, 3927] |
-| **Build Tool** | **Vite** | `7.2.2` | [cite\_start]Next-generation frontend tooling for a fast development experience. [cite: 3245, 3957] |
-| **Styling** | **Tailwind CSS** | `4.1.17` | [cite\_start]Utility-first CSS framework for rapid UI development. [cite: 3210, 3945] |
-| **Animation** | **Framer Motion** | `12.23.24` | [cite\_start]Production-ready motion library for fluid animations. [cite: 3459, 3835] |
-| **Icons** | **Lucide React** | `0.554.0` | [cite\_start]A clean and customizable open-source icon set. [cite: 3484, 3899] |
-| **Code Quality** | **ESLint** | `9.39.1` | [cite\_start]Static analysis tool for identifying problematic patterns. [cite: 3426, 3802] |
+### 📄 **Sections**
 
-## 🏗️ 3. Architecture
+- 🏠 **Hero** - Animated introduction with typing effect
+- 📊 **Stats** - Animated counters for key metrics
+- 👤 **About** - Personal info with professional photo
+- 💻 **Skills** - Technology stack showcase
+- 💼 **Experience** - Timeline of work history
+- 🎓 **Education** - Academic background & certifications
+- 🚀 **Projects** - Portfolio of work with live demos
+- 📬 **Contact** - Get in touch form
 
-This project employs a modern SPA architecture, built upon the following principles:
+---
 
-  * **Component-Driven UI:** The application is broken down into reusable React components, managed by React 19's features.
-  * [cite\_start]**Fast Development Environment (Vite):** Vite serves modules via native ES imports, bypassing bundling in development for blazing fast updates. [cite: 3245, 3957]
-  * [cite\_start]**Atomic Styling:** Tailwind CSS is integrated using the `@tailwindcss/vite` plugin[cite: 3748], promoting consistency and rapid styling by composing low-level utility classes.
-  * **Declarative Animations:** Framer Motion is used to create smooth, physics-based animations directly within the component tree, enhancing visual appeal without complex imperative code.
+## 🛠️ Tech Stack
 
-## 🌟 4. Features
+<div align="center">
 
-  * **Responsive Design:** Optimized for seamless viewing across all devices (mobile, tablet, desktop).
-  * **Fluid Animations:** Engaging transitions and motion effects powered by Framer Motion.
-  * **Modern Layouts:** Clean, maintainable styling provided by Tailwind CSS.
-  * **Custom Icons:** Integration of Lucide React for a lightweight and consistent icon set.
-  * **Development Speed:** Ultra-fast HMR (Hot Module Replacement) and build times thanks to Vite.
+|    Category    |  Technology   | Version  |
+| :------------: | :-----------: | :------: |
+|  **Frontend**  |     React     |  19.2.0  |
+| **Build Tool** |     Vite      |  7.2.2   |
+|  **Styling**   | Tailwind CSS  |  4.1.17  |
+| **Animation**  | Framer Motion | 12.23.24 |
+|   **Icons**    | Lucide React  | 0.554.0  |
+|   **Email**    |    EmailJS    |  Latest  |
+|  **Linting**   |    ESLint     |  9.39.1  |
 
-## ✅ 5. Testing & Code Quality
+</div>
 
-The project utilizes modern tools to maintain high code quality:
+---
 
-  * **ESLint:** Configured to enforce coding standards and detect potential errors. [cite\_start]The setup includes specific rules for Hooks compatibility (`eslint-plugin-react-hooks`) [cite: 3434, 3810] [cite\_start]and React Fast Refresh optimization (`eslint-plugin-react-refresh`)[cite: 3436, 3813].
-  * [cite\_start]**Type Safety:** While the exact configuration is not shown, the use of `@types/react` and `@types/react-dom` suggests the codebase is written in **TypeScript** for stronger type checking and fewer runtime errors. [cite: 3380, 3381]
-
-## 📁 6. Folder Structure
-
-The project follows a standard modern React application structure:
+## 📁 Project Structure
 
 ```
-/app
-├── /node_modules   (Project dependencies)
-├── /src
-│   ├── /assets     (Images, fonts, etc.)
-│   ├── /components (Reusable UI components)
-│   ├── /pages      (Main view components for routes)
-│   ├── App.jsx/tsx (Main application component)
-│   └── main.jsx/tsx (Entry file)
-├── .eslintrc.cjs   (ESLint configuration)
-├── index.html      (Main HTML file)
-├── package.json    (Project manifest)
-├── vite.config.js  (Vite configuration)
-└── tailwind.config.js (Tailwind CSS configuration)
+src/
+├── Components/
+│   ├── About.jsx          # About section with photo
+│   ├── Contact.jsx        # Contact form with EmailJS
+│   ├── CustomCursor.jsx   # Custom cursor effect
+│   ├── Education.jsx      # Education & certifications
+│   ├── Experience.jsx     # Work experience timeline
+│   ├── Footer.jsx         # Site footer
+│   ├── Hero.jsx           # Hero section with typing effect
+│   ├── LoadingScreen.jsx  # Splash screen
+│   ├── Navbar.jsx         # Navigation bar
+│   ├── ParticleBackground.jsx  # Animated particles
+│   ├── Projects.jsx       # Projects showcase
+│   ├── ScrollToTop.jsx    # Scroll button
+│   ├── Skills.jsx         # Skills grid
+│   ├── Stats.jsx          # Animated statistics
+│   └── ThemeToggle.jsx    # Dark/Light mode toggle
+├── context/
+│   └── ThemeContext.jsx   # Theme state management
+├── App.jsx                # Main application
+├── App.css                # Global styles + light mode
+└── main.jsx               # Entry point
 ```
 
-## 🏃‍♀️ 7. How to Run the Project
+---
 
-To get a local copy up and running, follow these simple steps.
+## 🚀 Getting Started
 
 ### Prerequisites
 
-  * [cite\_start]Node.js (`^20.19.0 || >=22.12.0` recommended based on `vite` engine requirement) [cite: 3248, 3257]
-  * npm or pnpm
+- Node.js `^20.19.0` or `>=22.12.0`
+- npm or pnpm
 
 ### Installation
 
-1.  Clone the repository:
-    ```bash
-    git clone [Your Repository URL]
-    cd app
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    # or pnpm install
-    ```
+1. **Clone the repository**
 
-### Development Server
+   ```bash
+   git clone https://github.com/AbdelrhamanWael/My-Portfolio.git
+   cd My-Portfolio/app
+   ```
 
-Start the development server with HMR:
+2. **Install dependencies**
 
-```bash
-npm run dev
-```
+   ```bash
+   npm install
+   ```
 
-The application will be available at `http://localhost:5173/` (default Vite port).
+3. **Start development server**
 
-### Building for Production
+   ```bash
+   npm run dev
+   ```
 
-Compile and bundle the project for deployment:
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```bash
-npm run build
-```
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-The optimized static files will be generated in the `/dist` directory.
+---
 
-## 📈 8. Future Improvements
+## ⚙️ Configuration
 
-  * **State Management:** Implement a dedicated state management library (e.g., Zustand, Redux Toolkit) for complex state logic.
-  * **Server-Side Rendering (SSR):** Investigate integrating a framework like Next.js or Astro to improve SEO and initial load performance.
-  * **Automated Testing:** Introduce unit and end-to-end tests using Vitest/Jest and Cypress.
+### EmailJS Setup (Optional)
 
-## 📸 9. Screenshots Section
+To enable the contact form:
 
-<img width="1914" height="8620" alt="localhost_5173_" src="https://github.com/user-attachments/assets/8a371015-dd95-4ed9-af61-18cc583ec3bc" />
+1. Create an account at [EmailJS](https://www.emailjs.com/)
+2. Create a service and email template
+3. Update `src/Components/Contact.jsx`:
+   ```javascript
+   await emailjs.sendForm(
+     "YOUR_SERVICE_ID",
+     "YOUR_TEMPLATE_ID",
+     formRef.current,
+     "YOUR_PUBLIC_KEY",
+   );
+   ```
 
+---
 
-## 🌐 10. Social Links
+## 📸 Screenshots
 
-Let's connect\!
+### 🌙 Dark Mode
 
-  * **GitHub:** (https://github.com/AbdelrhamanWael)
-  * **LinkedIn:** (https://www.linkedin.com/in/abdelrhaman-wael-mohammed-790171366/)
-  
+<img width="100%" alt="Portfolio Dark Mode" src="https://github.com/user-attachments/assets/8a371015-dd95-4ed9-af61-18cc583ec3bc" />
+
+---
+
+## 👨‍💻 About Me
+
+I'm **Abdelrhaman Wael**, a passionate Full Stack Developer currently pursuing my Computer Science degree at Egyptian Chinese University.
+
+### 💼 Experience
+
+- **Digital Egypt Pioneers Program** - Full Stack .NET Web Developer (2024-2025)
+- **DevWave** - Web Development Intern (2024)
+
+### 🔧 Skills
+
+`React` `JavaScript` `TypeScript` `.NET` `C#` `Tailwind CSS` `Firebase` `SQL` `Git`
+
+---
+
+## 🌐 Connect With Me
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AbdelrhamanWael)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdelrhaman-wael-mohammed-790171366/)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:abdelrhamanwael8@gmail.com)
+
+</div>
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+**⭐ If you like this portfolio, give it a star!**
+
+Made with ❤️ by **Abdelrhaman Wael**
+
+</div>
