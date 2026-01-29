@@ -165,7 +165,9 @@ To enable the contact form:
 
 ### 🌙 Dark Mode
 
-![Uploading localhost_5173_.png…]()
+<img width="1496" height="16384" alt="localhost_5173_" src="https://github.com/user-attachments/assets/83302dfd-c698-4ee4-8bdd-9db254eb1ad5" />
+
+
 
 
 ---
