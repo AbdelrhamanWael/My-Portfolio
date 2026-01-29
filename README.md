@@ -165,12 +165,32 @@ To enable the contact form:
 
 ### 🌙 Dark Mode
 
-<img width="1496" height="16384" alt="localhost_5173_" src="https://github.com/user-attachments/assets/83302dfd-c698-4ee4-8bdd-9db254eb1ad5" />
+<details open>
+<summary><b>Full Portfolio Preview</b></summary>
 
+<img width="100%" alt="Portfolio Dark Mode" src="https://github.com/user-attachments/assets/83302dfd-c698-4ee4-8bdd-9db254eb1ad5" />
 
+</details>
 
+### 🎬 Interactive Features
 
----
+| Feature                    | Preview                                   |
+| -------------------------- | ----------------------------------------- |
+| ⏳ **Loading Screen**      | Branded splash with animated progress bar |
+| ✨ **Particle Background** | Interactive connected particles in hero   |
+| ⌨️ **Typing Effect**       | Dynamic role cycling animation            |
+| 🖱️ **Custom Cursor**       | Dot + ring cursor with hover states       |
+| 📊 **Stats Counter**       | Animated count-up on scroll               |
+| 🃏 **Card Animations**     | Subtle lift and glow on hover             |
+| 🌙 **Theme Toggle**        | Smooth dark/light mode switching          |
+
+### 📱 Responsive Design
+
+The portfolio is fully responsive and optimized for:
+
+- 📱 **Mobile** - Touch-friendly navigation
+- 📱 **Tablet** - Adaptive layouts
+- 💻 **Desktop** - Full animations and effects---
 
 ## 👨‍💻 About Me
 
