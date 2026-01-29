@@ -1,221 +1,229 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
-            }
-        }
-    };
+    const formRef = useRef()
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    })
+    const [status, setStatus] = useState({ type: '', message: '' })
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: 'spring',
-                damping: 15,
-                stiffness: 100
-            }
-        }
-    };
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
 
-    const contactItemVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                type: 'spring',
-                damping: 20,
-                stiffness: 100
-            }
-        }
-    };
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setStatus({ type: '', message: '' })
 
-    const formVariants = {
-        hidden: { opacity: 0, x: 50 },
-        visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                type: 'spring',
-                damping: 20,
-                stiffness: 100
-            }
+        try {
+            // Note: You need to replace these with your actual EmailJS credentials
+            // Sign up at https://www.emailjs.com/ (free tier available)
+            await emailjs.sendForm(
+                'YOUR_SERVICE_ID',    // Replace with your EmailJS service ID
+                'YOUR_TEMPLATE_ID',   // Replace with your EmailJS template ID
+                formRef.current,
+                'YOUR_PUBLIC_KEY'     // Replace with your EmailJS public key
+            )
+            
+            setStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' })
+            setFormData({ name: '', email: '', message: '' })
+        } catch (error) {
+            setStatus({ type: 'error', message: 'Failed to send message. Please try again or contact me directly.' })
+        } finally {
+            setIsSubmitting(false)
         }
-    };
-
-    const buttonVariants = {
-        hover: { scale: 1.05, transition: { duration: 0.2 } },
-        tap: { scale: 0.95 }
-    };
+    }
 
     return (
-        <motion.section
-            id="contact"
-            className="py-20 bg-gray-900/50"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-        >
+        <section id="contact" className="py-20 bg-gray-900/50">
             <div className="max-w-4xl mx-auto px-6">
-                <motion.h2
-                    className="text-4xl md:text-5xl font-bold mb-12 text-center bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-                    variants={itemVariants}
+                {/* Header */}
+                <motion.div 
+                    className="text-center mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
                 >
-                    Get In Touch
-                </motion.h2>
+                    <span className="inline-block px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium mb-4">
+                        📬 Contact Me
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Get In <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
+                    </h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                        Have a project in mind? Let's work together to create something amazing.
+                    </p>
+                </motion.div>
+
                 <div className="grid md:grid-cols-2 gap-12">
-                    <motion.div variants={containerVariants}>
-                        <motion.p
-                            className="text-gray-400 text-lg mb-8 leading-relaxed"
-                            variants={itemVariants}
-                        >
-                            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's create something amazing together!
-                        </motion.p>
-                        <motion.div
-                            className="space-y-4"
-                            variants={containerVariants}
-                        >
-                            <motion.a
-                                href="mailto:your.email@example.com"
+                    {/* Contact Info */}
+                    <motion.div 
+                        className="space-y-6"
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                    >
+                        <p className="text-gray-400 text-lg leading-relaxed">
+                            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                        </p>
+
+                        <div className="space-y-4">
+                            <a
+                                href="mailto:abdelrhamanwael8@gmail.com"
                                 className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-500 transition-all group"
-                                variants={contactItemVariants}
-                                whileHover={{
-                                    scale: 1.02,
-                                    boxShadow: '0 10px 30px rgba(168, 85, 247, 0.2)'
-                                }}
-                                transition={{ duration: 0.3 }}
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all"
-                                    whileHover={{ rotate: 360 }}
-                                    transition={{ duration: 0.6 }}
-                                >
-                                    <Mail className="w-6 h-6" />
-                                </motion.div>
+                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                    <Mail className="w-6 h-6 text-white" />
+                                </div>
                                 <div>
                                     <div className="text-sm text-gray-500">Email</div>
-                                    <div className="text-purple-400 " > 
-                                    abdelrhamanwael8@gmail.com</div>
+                                    <div className="text-purple-400">abdelrhamanwael8@gmail.com</div>
                                 </div>
-                            </motion.a>
-                            <motion.a
-                                href="https://linkedin.com"
+                            </a>
+
+                            <a
+                                href="https://www.linkedin.com/in/abdelrhaman-wael-mohammed-790171366"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-500 transition-all group"
-                                variants={contactItemVariants}
-                                whileHover={{
-                                    scale: 1.02,
-                                    boxShadow: '0 10px 30px rgba(168, 85, 247, 0.2)'
-                                }}
-                                transition={{ duration: 0.3 }}
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all"
-                                    whileHover={{ rotate: 360 }}
-                                    transition={{ duration: 0.6 }}
-                                >
-                                    <Linkedin className="w-6 h-6" />
-                                </motion.div>
+                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                    <Linkedin className="w-6 h-6 text-white" />
+                                </div>
                                 <div>
                                     <div className="text-sm text-gray-500">LinkedIn</div>
                                     <div className="text-purple-400">Connect with me</div>
                                 </div>
-                            </motion.a>
-                            <motion.a
-                                href="https://github.com"
+                            </a>
+
+                            <a
+                                href="https://github.com/AbdelrhamanWael"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-500 transition-all group"
-                                variants={contactItemVariants}
-                                whileHover={{
-                                    scale: 1.02,
-                                    boxShadow: '0 10px 30px rgba(168, 85, 247, 0.2)'
-                                }}
-                                transition={{ duration: 0.3 }}
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all"
-                                    whileHover={{ rotate: 360 }}
-                                    transition={{ duration: 0.6 }}
-                                >
-                                    <Github className="w-6 h-6" />
-                                </motion.div>
+                                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                                    <Github className="w-6 h-6 text-white" />
+                                </div>
                                 <div>
                                     <div className="text-sm text-gray-500">GitHub</div>
                                     <div className="text-purple-400">View my code</div>
                                 </div>
-                            </motion.a>
-                        </motion.div>
+                            </a>
+                        </div>
                     </motion.div>
+
+                    {/* Contact Form */}
                     <motion.div
-                        className="space-y-4"
-                        variants={formVariants}
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        viewport={{ once: true }}
                     >
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1, duration: 0.5 }}
-                            viewport={{ once: true }}
-                        >
-                            <input
-                                type="text"
-                                placeholder="Your Name"
-                                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-100 placeholder-gray-500"
-                            />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            viewport={{ once: true }}
-                        >
-                            <input
-                                type="email"
-                                placeholder="Your Email"
-                                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-100 placeholder-gray-500"
-                            />
-                        </motion.div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.5 }}
-                            viewport={{ once: true }}
-                        >
-                            <textarea
-                                rows="5"
-                                placeholder="Your Message"
-                                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-100 placeholder-gray-500 resize-none"
-                            ></textarea>
-                        </motion.div>
-                        <motion.button
-                            onClick={(e) => {
-                                e.preventDefault();
-                                alert('Message sent! (This is a demo - connect to your backend)');
-                            }}
-                            className="w-full px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            Send Message
-                        </motion.button>
+                        <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+                            <div>
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                                    Your Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
+                                    placeholder="John Doe"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                                    Your Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
+                                    placeholder="john@example.com"
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    rows={5}
+                                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
+                                    placeholder="Tell me about your project..."
+                                />
+                            </div>
+
+                            {/* Status message */}
+                            {status.message && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className={`flex items-center gap-2 p-3 rounded-lg ${
+                                        status.type === 'success' 
+                                            ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
+                                            : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                                    }`}
+                                >
+                                    {status.type === 'success' ? (
+                                        <CheckCircle className="w-5 h-5" />
+                                    ) : (
+                                        <AlertCircle className="w-5 h-5" />
+                                    )}
+                                    <span className="text-sm">{status.message}</span>
+                                </motion.div>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send className="w-5 h-5" />
+                                        Send Message
+                                    </>
+                                )}
+                            </button>
+                        </form>
+
+                        <p className="text-gray-500 text-sm text-center mt-4">
+                            I'll respond within 24 hours!
+                        </p>
                     </motion.div>
                 </div>
             </div>
-        </motion.section>
-
+        </section>
     )
 }
 

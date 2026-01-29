@@ -1,133 +1,107 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Download } from 'lucide-react';
-import photo from '../../public/images/Gemini_Generated_Image_g5smkng5smkng5sm.png'
-
+import { Download, MapPin, Briefcase, GraduationCap } from 'lucide-react';
+import photo from '../../public/images/abdelrhaman-photo.jpg'
 
 const About = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.3,
-                delayChildren: 0.2
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: 'spring',
-                damping: 20,
-                stiffness: 100
-            }
-        }
-    };
-
-    const imageVariants = {
-        hidden: { opacity: 0, scale: 0.8, rotateY: -15 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            rotateY: 0,
-            transition: {
-                duration: 0.8,
-                ease: 'easeOut'
-            }
-        }
-    };
-
-    const buttonVariants = {
-        hover: { scale: 1.05, transition: { duration: 0.2 } },
-        tap: { scale: 0.95 }
-    };
-
     return (
-        <motion.section
-            id="about"
-            className="py-20 relative"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-        >
+        <section id="about" className="py-20 relative">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <motion.div
-                        className="relative group"
-                        variants={imageVariants}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <motion.div
-                            className="absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"
-                            animate={{
-                                scale: [1, 1.1, 1],
-                                opacity: [0.5, 0.7, 0.5]
-                            }}
-                            transition={{
-                                duration: 3,
-                                repeat: Infinity,
-                                ease: 'easeInOut'
-                            }}
-                        ></motion.div>
-                        <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-900">
-                            <img
-                                src={photo}
-                                alt="Profile"
-                                className="w-full h-full object-cover"
-                            />
+                <motion.div 
+                    className="grid md:grid-cols-2 gap-12 items-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    {/* Image Section - Circular Professional Frame */}
+                    <div className="flex justify-center md:justify-start">
+                        <div className="relative">
+                            {/* Rotating gradient ring */}
+                            <div className="absolute -inset-3 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full opacity-75 blur-sm"></div>
+                            
+                            {/* Outer ring */}
+                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                            
+                            {/* Main image container */}
+                            <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-gray-900 bg-gray-800">
+                                <img
+                                    src={photo}
+                                    alt="Abdelrhaman Wael - Full Stack Developer"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            
+                            {/* Status badge */}
+                            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full flex items-center gap-2 shadow-lg">
+                                <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                                <span className="text-sm text-gray-300">Available for work</span>
+                            </div>
                         </div>
-                    </motion.div>
-                    <motion.div variants={containerVariants}>
-                        <motion.h2
-                            className="text-4xl md:text-5xl font-bold mb-6 bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-                            variants={itemVariants}
+                    </div>
+
+                    {/* Content Section */}
+                    <div>
+                        <motion.span 
+                            className="inline-block px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-sm font-medium mb-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            viewport={{ once: true }}
                         >
-                            About Me
-                        </motion.h2>
-                        <motion.p
-                            className="text-gray-400 mb-4 text-lg leading-relaxed"
-                            variants={itemVariants}
-                        >
-                            I'm a passionate full-stack developer with 1+ years of experience building scalable web applications.
-                            I specialize in creating elegant solutions to complex problems using modern technologies.
-                        </motion.p>
-                        <motion.p
-                            className="text-gray-400 mb-4 text-lg leading-relaxed"
-                            variants={itemVariants}
-                        >
-                            My approach combines technical expertise with creative thinking, ensuring every project not only
-                            works flawlessly but also delivers an exceptional user experience.
-                        </motion.p>
-                        <motion.p
-                            className="text-gray-400 mb-8 text-lg leading-relaxed"
-                            variants={itemVariants}
-                        >
-                            When I'm not coding, you'll find me exploring new technologies, contributing to open source,
+                            👋 Get to know me
+                        </motion.span>
+                        
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                            About <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Me</span>
+                        </h2>
+                        
+                        <p className="text-gray-400 mb-4 text-lg leading-relaxed">
+                            I'm <span className="text-white font-semibold">Abdelrhaman Wael</span>, a passionate full-stack developer 
+                            currently pursuing my Computer Science degree at Egyptian Chinese University.
+                        </p>
+                        
+                        <p className="text-gray-400 mb-4 text-lg leading-relaxed">
+                            I specialize in creating elegant solutions to complex problems using modern technologies 
+                            like React, .NET, and Tailwind CSS. My approach combines technical expertise with 
+                            creative thinking.
+                        </p>
+                        
+                        <p className="text-gray-400 mb-6 text-lg leading-relaxed">
+                            When I'm not coding, you'll find me exploring new technologies, working on AI/ML projects,
                             or sharing knowledge with the developer community.
-                        </motion.p>
-                        <motion.a
+                        </p>
+
+                        {/* Quick Info */}
+                        <div className="grid grid-cols-2 gap-4 mb-8">
+                            <div className="flex items-center gap-3 text-gray-400">
+                                <MapPin className="w-5 h-5 text-purple-400" />
+                                <span>Cairo, Egypt</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-gray-400">
+                                <Briefcase className="w-5 h-5 text-purple-400" />
+                                <span>Full Stack Dev</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-gray-400">
+                                <GraduationCap className="w-5 h-5 text-purple-400" />
+                                <span>CS Student</span>
+                            </div>
+                        </div>
+                        
+                        {/* Resume Button */}
+                        <a
                             href="https://drive.google.com/file/d/1uVvrm2vTRNCF69aiLiEKkpcwHMJUxwb2/view?usp=drive_link"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:border-purple-500 transition-all duration-300 group"
-                            variants={buttonVariants}
-                            whileHover="hover"
-                            whileTap="tap"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-white font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
                         >
-                            <Download className="w-5 h-5 group-hover:text-purple-400 transition-colors" />
-                            <span>Download Resume</span>
-                        </motion.a>
-                    </motion.div>
-                </div>
+                            <Download className="w-5 h-5" />
+                            Download Resume
+                        </a>
+                    </div>
+                </motion.div>
             </div>
-        </motion.section>
+        </section>
     )
 }
 

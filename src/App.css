@@ -1,1 +1,249 @@
 @import "tailwindcss";
+
+/* ========================================
+   Light Mode Styles
+   ======================================== */
+.light-mode {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+}
+
+/* Main App Container */
+.light-mode .App {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Background Colors */
+.light-mode .bg-gray-950,
+.light-mode .bg-gray-900,
+.light-mode .bg-gray-900\/50,
+.light-mode .bg-gray-900\/30 {
+    background-color: var(--bg-secondary) !important;
+}
+
+.light-mode .bg-gray-800,
+.light-mode .bg-gray-800\/50,
+.light-mode .bg-gray-800\/30,
+.light-mode .bg-gray-800\/80 {
+    background-color: var(--bg-card) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .bg-gray-700,
+.light-mode .bg-gray-700\/50 {
+    background-color: #e2e8f0 !important;
+}
+
+/* Text Colors */
+.light-mode .text-white {
+    color: var(--text-primary) !important;
+}
+
+.light-mode .text-gray-100,
+.light-mode .text-gray-200 {
+    color: var(--text-primary) !important;
+}
+
+.light-mode .text-gray-300,
+.light-mode .text-gray-400 {
+    color: var(--text-secondary) !important;
+}
+
+.light-mode .text-gray-500,
+.light-mode .text-gray-600 {
+    color: var(--text-muted) !important;
+}
+
+/* Border Colors */
+.light-mode .border-gray-700,
+.light-mode .border-gray-800 {
+    border-color: var(--border-color) !important;
+}
+
+.light-mode .border-gray-600 {
+    border-color: var(--border-hover) !important;
+}
+
+/* Navbar */
+.light-mode nav,
+.light-mode .backdrop-blur-md {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+/* Cards & Sections */
+.light-mode section {
+    background-color: transparent !important;
+}
+
+.light-mode .rounded-2xl.border,
+.light-mode .rounded-xl.border {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Purple/Pink accents remain the same - they work on both themes */
+.light-mode .text-purple-400 {
+    color: #9333ea !important;
+}
+
+.light-mode .text-pink-400 {
+    color: #db2777 !important;
+}
+
+/* Gradients - Make them slightly more vibrant for light mode */
+.light-mode .from-purple-500 {
+    --tw-gradient-from: #8b5cf6 !important;
+}
+
+.light-mode .to-pink-500 {
+    --tw-gradient-to: #ec4899 !important;
+}
+
+/* Input fields */
+.light-mode input,
+.light-mode textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.light-mode input:focus,
+.light-mode textarea:focus {
+    border-color: #a855f7 !important;
+}
+
+/* Buttons - keep gradient buttons as is, update outline buttons */
+.light-mode .border-purple-500 {
+    border-color: #a855f7 !important;
+}
+
+.light-mode .hover\:bg-purple-500\/10:hover {
+    background-color: rgba(168, 85, 247, 0.1) !important;
+}
+
+/* Stats section */
+.light-mode .bg-gradient-to-r.from-purple-900\/20 {
+    background: linear-gradient(to right, rgba(147, 51, 234, 0.05), var(--bg-secondary), rgba(236, 72, 153, 0.05)) !important;
+}
+
+/* Loading screen - keep dark */
+.light-mode .fixed.z-\[100\].bg-gray-950 {
+    background-color: #0f172a !important;
+}
+
+/* Custom Cursor */
+.light-mode .mix-blend-difference {
+    mix-blend-mode: normal !important;
+}
+
+.light-mode .mix-blend-difference .bg-white {
+    background-color: #6b21a8 !important;
+}
+
+/* Theme toggle button */
+.light-mode button[aria-label="Toggle theme"] {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* Scroll to top button - keep gradient */
+.light-mode button[aria-label="Scroll to top"] {
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3) !important;
+}
+
+/* Project cards */
+.light-mode article {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+}
+
+.light-mode article:hover {
+    border-color: rgba(168, 85, 247, 0.5) !important;
+}
+
+/* Tech tags */
+.light-mode .rounded-full.text-xs {
+    background-color: #f1f5f9 !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Footer */
+.light-mode footer {
+    border-color: var(--border-color) !important;
+}
+
+/* ========================================
+   Custom Scrollbar
+   ======================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #a855f7, #ec4899);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #9333ea, #db2777);
+}
+
+.light-mode ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #8b5cf6, #ec4899);
+}
+
+/* ========================================
+   Global Styles
+   ======================================== */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background-color: rgba(168, 85, 247, 0.3);
+    color: white;
+}
+
+.light-mode ::selection {
+    background-color: rgba(168, 85, 247, 0.3);
+    color: #0f172a;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}

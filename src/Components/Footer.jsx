@@ -17,7 +17,7 @@ const Footer = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             viewport={{ once: true }}
           >
-            © 2024 Portfolio. Built with React & Tailwind CSS.
+            © {new Date().getFullYear()} Abdelrhaman Wael. Built with React & Tailwind CSS.
           </motion.p>
         </div>
       </motion.footer>
