@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const CustomCursor = () => {
@@ -6,24 +6,30 @@ const CustomCursor = () => {
     const [isPointer, setIsPointer] = useState(false)
     const [isHidden, setIsHidden] = useState(false)
     const [isClicking, setIsClicking] = useState(false)
+    const rafRef = useRef(null)
+    const posRef = useRef({ x: 0, y: 0 })
 
     useEffect(() => {
         const updatePosition = (e) => {
-            setPosition({ x: e.clientX, y: e.clientY })
-        }
+            posRef.current = { x: e.clientX, y: e.clientY }
 
-        const updateCursorType = () => {
-            const hoveredElement = document.elementFromPoint(position.x, position.y)
-            if (hoveredElement) {
-                const computedStyle = window.getComputedStyle(hoveredElement)
-                setIsPointer(
-                    computedStyle.cursor === 'pointer' ||
-                    hoveredElement.tagName === 'A' ||
-                    hoveredElement.tagName === 'BUTTON' ||
-                    hoveredElement.closest('a') ||
-                    hoveredElement.closest('button')
-                )
-            }
+            if (rafRef.current) return
+            rafRef.current = requestAnimationFrame(() => {
+                setPosition({ ...posRef.current })
+
+                const hoveredElement = document.elementFromPoint(posRef.current.x, posRef.current.y)
+                if (hoveredElement) {
+                    const computedStyle = window.getComputedStyle(hoveredElement)
+                    setIsPointer(
+                        computedStyle.cursor === 'pointer' ||
+                        hoveredElement.tagName === 'A' ||
+                        hoveredElement.tagName === 'BUTTON' ||
+                        !!hoveredElement.closest('a') ||
+                        !!hoveredElement.closest('button')
+                    )
+                }
+                rafRef.current = null
+            })
         }
 
         const handleMouseDown = () => setIsClicking(true)
@@ -31,8 +37,7 @@ const CustomCursor = () => {
         const handleMouseLeave = () => setIsHidden(true)
         const handleMouseEnter = () => setIsHidden(false)
 
-        window.addEventListener('mousemove', updatePosition)
-        window.addEventListener('mousemove', updateCursorType)
+        window.addEventListener('mousemove', updatePosition, { passive: true })
         window.addEventListener('mousedown', handleMouseDown)
         window.addEventListener('mouseup', handleMouseUp)
         document.body.addEventListener('mouseleave', handleMouseLeave)
@@ -40,13 +45,13 @@ const CustomCursor = () => {
 
         return () => {
             window.removeEventListener('mousemove', updatePosition)
-            window.removeEventListener('mousemove', updateCursorType)
             window.removeEventListener('mousedown', handleMouseDown)
             window.removeEventListener('mouseup', handleMouseUp)
             document.body.removeEventListener('mouseleave', handleMouseLeave)
             document.body.removeEventListener('mouseenter', handleMouseEnter)
+            if (rafRef.current) cancelAnimationFrame(rafRef.current)
         }
-    }, [position.x, position.y])
+    }, [])
 
     // Hide on mobile/touch devices
     if (typeof window !== 'undefined' && 'ontouchstart' in window) {
@@ -91,8 +96,8 @@ const CustomCursor = () => {
                 }}
             >
                 <div className={`w-10 h-10 rounded-full border-2 transition-all duration-300 ${
-                    isPointer 
-                        ? 'border-purple-500 bg-purple-500/10' 
+                    isPointer
+                        ? 'border-purple-500 bg-purple-500/10'
                         : 'border-purple-400/50'
                 }`} />
             </motion.div>

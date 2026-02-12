@@ -16,15 +16,19 @@ const ParticleBackground = () => {
 
         const createParticles = () => {
             particles = []
-            const particleCount = Math.floor((canvas.width * canvas.height) / 15000)
-            
+            // Cap particle count for performance
+            const particleCount = Math.min(
+                Math.floor((canvas.width * canvas.height) / 25000),
+                80
+            )
+
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     size: Math.random() * 2 + 0.5,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5,
+                    speedX: (Math.random() - 0.5) * 0.4,
+                    speedY: (Math.random() - 0.5) * 0.4,
                     opacity: Math.random() * 0.5 + 0.2
                 })
             }
@@ -32,8 +36,11 @@ const ParticleBackground = () => {
 
         const drawParticles = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
-            
-            particles.forEach((particle, index) => {
+
+            const len = particles.length
+            for (let i = 0; i < len; i++) {
+                const particle = particles[i]
+
                 // Update position
                 particle.x += particle.speedX
                 particle.y += particle.speedY
@@ -50,24 +57,25 @@ const ParticleBackground = () => {
                 ctx.fillStyle = `rgba(168, 85, 247, ${particle.opacity})`
                 ctx.fill()
 
-                // Draw connections
-                particles.forEach((otherParticle, otherIndex) => {
-                    if (index !== otherIndex) {
-                        const dx = particle.x - otherParticle.x
-                        const dy = particle.y - otherParticle.y
-                        const distance = Math.sqrt(dx * dx + dy * dy)
+                // Draw connections — only check forward to avoid duplicates
+                for (let j = i + 1; j < len; j++) {
+                    const other = particles[j]
+                    const dx = particle.x - other.x
+                    const dy = particle.y - other.y
+                    const distSq = dx * dx + dy * dy
 
-                        if (distance < 100) {
-                            ctx.beginPath()
-                            ctx.moveTo(particle.x, particle.y)
-                            ctx.lineTo(otherParticle.x, otherParticle.y)
-                            ctx.strokeStyle = `rgba(168, 85, 247, ${0.1 * (1 - distance / 100)})`
-                            ctx.lineWidth = 0.5
-                            ctx.stroke()
-                        }
+                    // Use squared distance to avoid sqrt
+                    if (distSq < 10000) { // 100 * 100
+                        const dist = Math.sqrt(distSq)
+                        ctx.beginPath()
+                        ctx.moveTo(particle.x, particle.y)
+                        ctx.lineTo(other.x, other.y)
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${0.1 * (1 - dist / 100)})`
+                        ctx.lineWidth = 0.5
+                        ctx.stroke()
                     }
-                })
-            })
+                }
+            }
 
             animationFrameId = requestAnimationFrame(drawParticles)
         }
@@ -76,14 +84,16 @@ const ParticleBackground = () => {
         createParticles()
         drawParticles()
 
-        window.addEventListener('resize', () => {
+        const handleResize = () => {
             resizeCanvas()
             createParticles()
-        })
+        }
+
+        window.addEventListener('resize', handleResize)
 
         return () => {
             cancelAnimationFrame(animationFrameId)
-            window.removeEventListener('resize', resizeCanvas)
+            window.removeEventListener('resize', handleResize)
         }
     }, [])
 
