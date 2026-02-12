@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Download, MapPin, Briefcase, GraduationCap } from 'lucide-react';
+import { Download, MapPin, Briefcase, GraduationCap, Code2, Palette, Zap, Lightbulb } from 'lucide-react';
 import photo from '../../public/images/abdelrhaman-photo.jpg'
 
 const About = () => {
@@ -100,6 +100,55 @@ const About = () => {
                         </a>
                     </div>
                 </motion.div>
+
+                {/* Unique Selling Points */}
+                <div className="mt-20">
+                    <motion.div 
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        {[
+                            {
+                                icon: <Zap className="w-6 h-6 text-yellow-400" />,
+                                title: "Fast & Optimized",
+                                desc: "Building high-performance applications with optimized code."
+                            },
+                            {
+                                icon: <Lightbulb className="w-6 h-6 text-purple-400" />,
+                                title: "Problem Solver",
+                                desc: "Turning complex challenges into simple, elegant solutions."
+                            },
+                            {
+                                icon: <Palette className="w-6 h-6 text-pink-400" />,
+                                title: "Pixel Perfect",
+                                desc: "Obsessive attention to detail for flawless UI implementation."
+                            },
+                            {
+                                icon: <Code2 className="w-6 h-6 text-blue-400" />,
+                                title: "Modern Tech",
+                                desc: "Leveraging the latest tools and frameworks for scalable apps."
+                            }
+                        ].map((feature, index) => (
+                            <motion.div
+                                key={index}
+                                className="p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 group"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                                <p className="text-gray-400 text-sm">{feature.desc}</p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     )
